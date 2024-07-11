@@ -1,6 +1,7 @@
 
 
 const  express = require('express');
+const cors = require('cors');
 const mongooes = require('mongoose'); 
  const bodyParser = require('body-parser');
 const info = require('./src/model');
@@ -9,11 +10,9 @@ const app = express()
 const PORT = process.env.PORT||4000
  app.use(bodyParser.urlencoded({extended : false}));
  app.use(bodyParser.json());
+ app.use(cors());
 mongooes.connect("mongodb+srv://ravipratihast71:LCtQ1SB82Dr5ITu3@cluster0.hkwcuwh.mongodb.net/GasMark").then( function(){
     console.log("db connected");
-
-
-
 
 const sch ={
     firstname:String,
