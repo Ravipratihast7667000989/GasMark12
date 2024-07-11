@@ -17,11 +17,11 @@ mongooes.connect("mongodb+srv://ravipratihast71:LCtQ1SB82Dr5ITu3@cluster0.hkwcuw
 const sch ={
     firstname:String,
     lastname:String,
-    mobilenumber:Number,
+    mobilenumber:String,
     email:String,
     idproof:String,
     address:String,
-    pincode:Number,
+    pincode:String,
     gender:String,
     dob:String,
     agency:String,
