@@ -177,7 +177,7 @@ app.post("/booking", async(req,res)=>{
 });
 
    
-    app.listen(port, () => console.log(
+    app.listen(port||process.env.port, () => console.log(
         `Server is Started ${port}`
     
     ));
