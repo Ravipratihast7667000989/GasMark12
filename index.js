@@ -9,7 +9,7 @@ const app = express()
 const PORT = process.env.PORT||4000
  app.use(bodyParser.urlencoded({extended : false}));
  app.use(bodyParser.json());
-mongooes.connect("mongodb://localhost:27017/GasMark_db").then( function(){
+mongooes.connect("mongodb+srv://ravipratihast71:LCtQ1SB82Dr5ITu3@cluster0.hkwcuwh.mongodb.net/GasMark").then( function(){
     console.log("db connected");
 
 
