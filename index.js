@@ -6,6 +6,7 @@ const mongooes = require('mongoose');
  const bodyParser = require('body-parser');
 const info = require('./src/model');
 const model = require('./src/model');
+const { Db } = require('mongodb');
 const app = express()
 const PORT = process.env.PORT||4000
  app.use(bodyParser.urlencoded({extended : false}));
@@ -14,6 +15,15 @@ const PORT = process.env.PORT||4000
 mongooes.connect("mongodb+srv://ravipratihast71:LCtQ1SB82Dr5ITu3@cluster0.hkwcuwh.mongodb.net/GasMark").then( function(){
     console.log("db connected");
 
+   
+ const consumer_id = Math.floor(Math.random() * 65766607880);
+   console.log(consumer_id); 
+//    var cureentdate = new Date();
+//    console.log(cureentdate);
+
+
+   
+   
 const sch ={
     firstname:String,
     lastname:String,
@@ -26,13 +36,32 @@ const sch ={
     dob:String,
     agency:String,
     nationality:String,
-    cylindertype:String
+    cylindertype:String,
+    consumer_id:{
+        default:consumer_id,
+        type:String,
+        
+    },
+    knowlegement_number:{
 
+        default:Date.now(),
+        type:String,
+    },
+    dateandtime:{
+        default:Date.now(),
+        type:Date,
+        unique:true,
+        requrie:true
+    }
+   
 }
+
 const monmodel1 = mongooes.model("newconnection_user",sch);
 
+ 
 // insert data
 app.post("/post", async(req,res)=>{
+   
     const data = new monmodel1({
     firstname:req.body.firstname,
     lastname:req.body.lastname,
@@ -45,7 +74,10 @@ app.post("/post", async(req,res)=>{
     dob:req.body.dob,
     agency:req.body.agency,
     nationality:req.body.nationality,
-    cylindertype:req.body.cylindertype
+    cylindertype:req.body.cylindertype,
+    consumer_id:req.body. consumer_id,
+    knowlegement_number:req.body.knowlegement_number,
+    dateandtime:req.body.dateandtime,
 
 
     });
@@ -54,7 +86,6 @@ app.post("/post", async(req,res)=>{
 
 
 });
-
 
 const sch1 ={
     delivery_type:String,
@@ -145,4 +176,3 @@ app.put("/booking/:_id",async(req,res)=>{
         `Server is Started ${PORT}`
     
     ));
-
